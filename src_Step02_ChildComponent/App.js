@@ -35,6 +35,7 @@ class App extends Component{
         <MyName name="김구라"/>
         <MyName name="해골"/>
         <MyName name={name}/>
+
       </div>
     )
   }
