@@ -23,7 +23,9 @@ class App extends Component{
     //state 에 저장된 msg 를 이용해서 li 요소를 만들어서 msgs 배열에 추가
     //현재까지 입력한 문자열 읽어오기 
     const msg = this.inputMsg.value;
-    //jsx 객체를 기존 배열에 추가해서 새로운 배열 얻어내기 
+    //jsx 객체를 기존 배열에 추가해서 새로운 배열 얻어내기
+    //모델이 배열인 경우 데이터를 추가했을 때 UI가 업데이트 되기 위해서는 
+    //단순히 push를 하는 것이 아닌 계속해서 concat 메소드를 통해 새로운 배열의 참조값을 얻어와야 한다.
     const newArray = this.state.msgs.concat(<li key={this.state.index}>{msg}</li>);
     //상태값을 변경해서 UI 가 update 되게 한다. 
     this.setState({
@@ -44,6 +46,7 @@ class App extends Component{
         */}
         <input type="text" onInput={this.onInput} ref={(ref)=>{
             //inputMsg 라는 이름의 필드를 만들어서 저장하기
+            //자바스크립트에서는 자바와 달리 필드를 미리 선언할 필요는 없다.
             this.inputMsg=ref;
         }}/>
         <button onClick={this.addClicked}>추가</button>
